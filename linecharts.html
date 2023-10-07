@@ -21,56 +21,111 @@
     var option;
 
     option = {
-        legend:{
-            show:true,
-            type:'plain',
-            bottom:"20%",
-            textStyle:{
-                fontFamily:'微软雅黑',
-                fontSize:20
+        legend: {
+            show: true,
+            type: 'plain',
+            bottom: "0",
+            textStyle: {
+                fontFamily: '微软雅黑',
+                fontSize: 20
             },
         },
-        title:{
-           text:'折线图',
-           top:10,
-           left:'center',
-           textStyle:{
-            fontSize:20
-           }
-           
+        title: [{
+            text: '折线图',
+            top: 10,
+            left: 'center',
+            textStyle: {
+                fontSize: 20
+            }
         },
-        tooltip:{
-            trigger:'axis',
-            axisPointer:{
-                type:'cross',
-                label:{
-                    fontSize:20
+        {
+            text: '降雪量',
+            top: "50%",
+            left: 'center',
+            textStyle: {
+                fontSize: 20
+            }
+        }],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    fontSize: 20
                 }
             },
-           
+            formatter: (param) => {
+                return `${param[0].axisValue}</br>${param[0].marker} ${param[0].seriesName} ${param[0].value}`
+
+            },
+            textStyle: {
+                fontSize: 20
+            }
+
         },
-        grid:[{
-            bottom:'30%'
+        grid: [{
+            bottom: '60%'
+        },{
+            top:'60%'
         }],
-        xAxis: {
+        xAxis: [{
             type: 'category',
             data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisLabel:{
-                fontFamily:'微软雅黑',
-                fontSize:20
+            axisLabel: {
+                fontFamily: '微软雅黑',
+                fontSize: 20
             }
         },
-        yAxis: {
+        {
+            type: 'category',
+            gridIndex:1,
+            axisLabel: {
+                fontFamily: 'times',
+                fontSize: 20
+            },
+            data: ["2000-06-05", "2000-06-06", "2000-06-07", "2000-06-08", "2000-06-09", "2000-06-10", "2000-06-11", "2000-06-12", "2000-06-13", "2000-06-14", "2000-06-15", "2000-06-16", "2000-06-25", "2000-06-26", "2000-06-27", "2000-06-28", "2000-06-29"],
+        }],
+        yAxis:[ {
             type: 'value',
-            axisLabel:{
-                fontSize:20
+            axisLabel: {
+                fontSize: 20
             }
-        },
+        },{
+            gridIndex:1,
+            axisLabel: {
+                fontSize: 20
+            }
+        }],
         series: [
             {
-                name:'降雨量',
+                name: '降雨量',
                 data: [150, 230, 224, 218, 135, 147, 260],
-                type: 'line'
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 10,
+                lineStyle: {
+                    color: '#337'
+                },
+                itemStyle: {
+                    color: 'red',
+                },
+
+            },
+            {
+                name: '降雪量',
+                data: [120, 200, 211, 212, 115, 17, 460,120, 200, 211, 212, 115, 17, 460],
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 10,
+                lineStyle: {
+                    color: '#2e4'
+                },
+                itemStyle: {
+                    color: 'red',
+                },
+                xAxisIndex:1,
+                yAxisIndex:1
+
             }
         ]
     };
@@ -79,4 +134,5 @@
 </script>
 <style>
 </style>
+
 </html>
