@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="id" style="width: 100%; height: 1000px;">
+    <div id="id" style="width: 100%; height: 1100px;">
 
     </div>
 </body>
@@ -19,19 +19,19 @@
     var chartDom = document.getElementById('id');
     var myChart = echarts.init(chartDom);
     var option;
-
     option = {
         legend: {
             show: true,
             type: 'plain',
-            bottom: "0",
+            top: "0%",
+            left: "70%",
             textStyle: {
                 fontFamily: '微软雅黑',
                 fontSize: 20
             },
         },
         title: [{
-            text: '折线图',
+            text: '降雨量',
             top: 10,
             left: 'center',
             textStyle: {
@@ -40,7 +40,7 @@
         },
         {
             text: '降雪量',
-            top: "50%",
+            top: "55%",
             left: 'center',
             textStyle: {
                 fontSize: 20
@@ -61,12 +61,23 @@
             textStyle: {
                 fontSize: 20
             }
-
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                dataView: { readOnly: false },
+                magicType: { type: ['line', 'bar'] },
+                restore: {},
+                saveAsImage: {}
+            }
         },
         grid: [{
             bottom: '60%'
-        },{
-            top:'60%'
+        }, {
+            top: '60%',
         }],
         xAxis: [{
             type: 'category',
@@ -78,23 +89,38 @@
         },
         {
             type: 'category',
-            gridIndex:1,
+            gridIndex: 1,
             axisLabel: {
                 fontFamily: 'times',
                 fontSize: 20
             },
             data: ["2000-06-05", "2000-06-06", "2000-06-07", "2000-06-08", "2000-06-09", "2000-06-10", "2000-06-11", "2000-06-12", "2000-06-13", "2000-06-14", "2000-06-15", "2000-06-16", "2000-06-25", "2000-06-26", "2000-06-27", "2000-06-28", "2000-06-29"],
         }],
-        yAxis:[ {
+        yAxis: [{
             type: 'value',
             axisLabel: {
                 fontSize: 20
             }
-        },{
-            gridIndex:1,
+        }, {
+            gridIndex: 1,
             axisLabel: {
                 fontSize: 20
             }
+        }],
+        dataZoom: [{
+            xAxisIndex: 0,
+            type: "slider",
+            start: 0,
+            end: 20,
+            top: '45%',
+            brushSelect: true,
+        }, {
+            xAxisIndex: 1,
+            type: 'slider',
+            start: 0,
+            end: 20,
+            bottom: 0,
+            brushSelect: true,
         }],
         series: [
             {
@@ -113,7 +139,7 @@
             },
             {
                 name: '降雪量',
-                data: [120, 200, 211, 212, 115, 17, 460,120, 200, 211, 212, 115, 17, 460],
+                data: [120, 200, 211, 212, 115, 17, 460, 120, 200, 211, 212, 115, 17, 460],
                 type: 'line',
                 symbol: 'circle',
                 symbolSize: 10,
@@ -121,15 +147,14 @@
                     color: '#2e4'
                 },
                 itemStyle: {
-                    color: 'red',
+                    color: 'powderblue',
                 },
-                xAxisIndex:1,
-                yAxisIndex:1
+                xAxisIndex: 1,
+                yAxisIndex: 1
 
             }
         ]
     };
-
     option && myChart.setOption(option); 
 </script>
 <style>
