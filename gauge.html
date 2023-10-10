@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guagecharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
+        integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="id" style="width: 100%; height: 1100px;">
+
+    </div>
+</body>
+<script>
+    var chartDom = document.getElementById('id');
+    var myChart = echarts.init(chartDom);
+    var option;
+    option = {
+        series: [
+            {
+                type: 'gauge',
+                center: ["50%", "40%"],
+                data: [{
+                    title: {
+                        show: true,
+                        offsetCenter: [0, "-70%"],
+                        fontSize: 18
+                    },
+                    name: '汽车速度',
+                    value: 40,
+                    detail: {
+                        formatter: `{value} km/h`,
+                        offsetCenter: [0, '10%']
+                    },
+                    itemStyle: {
+                        color: '#335511',
+                    },
+                    pointer: {
+                        show: true,
+                        width: 10
+                    }
+                }],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: [[1, '#ccc']],
+                        width: 20,
+                    }
+                },
+                axisLabel: {
+                    distance: 30
+                },
+                axisTick: {
+                    show: false
+                },
+                markArea: {
+                    data: [
+                        [
+                            {
+                                name: '两个屏幕坐标之间的标域',
+                                x: 10,
+                                y: 10
+                            }, {
+                                x: '20%',
+                                y: '10%'
+                            }
+                        ]
+                    ]
+                },
+                name: '速度',
+                startAngle: -180,
+                endAngle: 0,
+                progress: {
+                    show: true,
+                    width: 20,
+                    itemStyle: {
+                        color: 'red'
+                    }
+                }
+            }
+        ]
+    };
+    option && myChart.setOption(option); 
+</script>
+<style>
+</style>
+
+</html>
