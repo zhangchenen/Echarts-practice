@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhexiancharts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
+        integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="id" style="width: 100%; height: 1100px;">
+
+    </div>
+</body>
+<script>
+    var chartDom = document.getElementById('id');
+    var myChart = echarts.init(chartDom);
+    var option;
+    option={
+        xAxis:{
+            type:'value',
+            name:"体重",
+            axisLine:{
+                show:true,
+                symbol:['none','arrow'],
+                symbolOffset:[10,10]
+            },
+            axisTick:{
+                show:true,
+                inside:true,
+                interval:1
+            },
+            axisLabel:{
+                formatter:`{value} kg`,
+            },
+            nameGap:20,
+      
+        },
+        yAxis:{
+            type:'category',
+            name:'血压',
+            data:['100', '110', '120', '300', '400', '500', '600', '700', '800'],
+            axisTick:{
+                inside:true
+            },
+            axisLabel:{
+                formatter:`{value} mmHg`
+            },
+            axisLine:{
+                show:true,
+                symbol:['none','arrow'],
+                symbolOffset:[10,10]
+            },
+            nameGap:20,
+      
+        },
+        series:[{
+            name:'weight(kg) vs blood pressure(mmHg)',
+            type:'line',
+            data:[110,456,187,200,459,123,230,240,250]
+        }]
+    }
+    option && myChart.setOption(option); 
+</script>
+<style>
+</style>
+
+</html>
